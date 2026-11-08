@@ -3,8 +3,9 @@
 Mirrors OutGameTranslation as read from the DLL: exact match (outgame, names,
 titles, descriptions) first; otherwise templates bucketed by the key's first
 character ('\\0' when the key starts with a token), tried in file order, first
-match wins; colour tags are ignored for matching; each captured value is itself
-looked up exactly.
+match wins; colour tags are ignored for matching. Captured values: a numeric
+token ({0}) is inserted as captured; a named token ({[name]suffix}) is looked up
+exactly and the suffix appended (ReplaceTargetToken).
 
 usage:
   python3 -I sim_templates.py <repo> "text1" "text2" ...
@@ -54,12 +55,17 @@ class Sim:
                 if m:
                     out = v
                     for n, val in zip(names, m.groups()):
-                        rep = val
+                        nm = re.match(r"\{\[([^\]]+)\]([^}]*)\}", n)
+                        if not nm:  # numeric token: AbyssMod inserts the captured text as is
+                            out = re.sub(re.escape(n), lambda _m, v_=val: v_, out)
+                            continue
+                        rep = val  # named token: captured text is looked up exactly
                         for d in self.exact:
-                            if val in d and isinstance(d[val], str):
+                            if val in d and isinstance(d[val], str) and d[val] != val:
                                 rep = d[val]
                                 break
-                        out = out.replace(n, rep, 1)
+                        out = re.sub(r"\{\[" + re.escape(nm.group(1)) + r"\]([^}]*)\}",
+                                     lambda mm, r_=rep: r_ + mm.group(1), out)
                     return out, k
         return None, None
 
