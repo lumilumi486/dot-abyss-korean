@@ -24,8 +24,10 @@ def check(src, ko):
         problems.append(f"protected tokens differ: {Counter(PROTECTED.findall(src))} vs {Counter(PROTECTED.findall(ko))}")
     if ko.count("\n") > src.count("\n"):
         problems.append("more line breaks than source")
-    if ko.count("<color=") != ko.count("</color>"):
-        problems.append("unbalanced color tags")
+    # colour wrappers may be added around Korean terms, but only as complete pairs:
+    # the open/close imbalance must equal the source's own (some sources leave one open)
+    if ko.count("<color=") - ko.count("</color>") != src.count("<color=") - src.count("</color>"):
+        problems.append("color tag balance differs from source")
     left = JAPANESE.findall(ko)
     if left:
         problems.append(f"Japanese left: {''.join(left)}")

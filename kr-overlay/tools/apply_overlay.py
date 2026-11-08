@@ -15,6 +15,7 @@ The overlay never edits upstream data blindly:
 usage (from repo root): python3 -I kr-overlay/tools/apply_overlay.py
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -33,6 +34,28 @@ def save(p, obj):
 
 def translated(d, k):
     return k in d and isinstance(d[k], str) and d[k] != k and d[k] != ""
+
+
+TEMPLATE_TOKEN = re.compile(r"\{\[[^\]]+\][^}]*\}|\{[^\[{}][^{}]*\}")
+COLOR_TAG = re.compile(r"</?color(?:=[^>]+)?>")
+
+
+def order_templates(og):
+    """AbyssMod tries outgame templates (keys with {0} / {[name]} tokens) in file
+    order and uses the first match, so a generic template listed earlier hides a
+    more specific one (e.g. "あと{0}時間" catching "あと3日5時間"). Put templates
+    with more fixed text first; ties keep their original order. Exact keys are
+    looked up by hash, so their position does not matter. The manifest hash sorts
+    keys itself, so reordering does not change it."""
+    plain, templates = [], []
+    for i, (k, v) in enumerate(og.items()):
+        stripped = COLOR_TAG.sub("", k)
+        if TEMPLATE_TOKEN.search(stripped):
+            templates.append((-len(TEMPLATE_TOKEN.sub("", stripped)), i, k, v))
+        else:
+            plain.append((k, v))
+    templates.sort()
+    return dict(plain + [(k, v) for _, _, k, v in templates])
 
 
 def main():
@@ -85,10 +108,17 @@ def main():
                 conflicts += 1
                 report.append(f"CONFLICT {target} {src[:30]!r}: upstream now {str(cur)[:40]!r}")
 
+    files["outgame"] = order_templates(files["outgame"])
     for name, obj in files.items():
         save(TR / name / "ko_KR.json", obj)
+
+    sys.path.insert(0, str(Path(__file__).parent))
+    import font_safe
+    fs_files, fs_values = font_safe.apply(ROOT)
+
     print(f"additions filled {filled} (upstream already translated differently: {upstream_has}); "
-          f"overrides applied {applied}, conflicts {conflicts}")
+          f"overrides applied {applied}, conflicts {conflicts}; "
+          f"font-safe glyphs fixed in {fs_values} values / {fs_files} files")
     for line in report:
         print("  " + line)
 

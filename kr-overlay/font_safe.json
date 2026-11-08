@@ -1,0 +1,15 @@
+{
+    "_note": "Characters missing from MaplestoryKR SDF (story font) -> glyphs it has. Applied to Korean values only.",
+    "map": {
+        "・": "·",
+        "〜": "～",
+        "—": "―",
+        "ー": "―",
+        "。": ".",
+        "、": ",",
+        "　": " ",
+        "Ｆ": "F"
+    },
+    "names": true,
+    "novel_prefixes": ["mas", "evs", "men"]
+}
