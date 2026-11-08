@@ -54,11 +54,46 @@ def _swap(old, new, value):
     return "".join(out), n
 
 
-def apply_rules(cfg, dicts):
-    """dicts: list of {src: ko} dicts (modified in place). Returns {rule: changed values}."""
+def _matches(k, kre, kno):
+    return kre.search(k) and not (kno and kno.search(k))
+
+
+def upstream_preferred(compiled, baseline):
+    """Keep a replace pair only while upstream itself (baseline = upstream values
+    before this overlay) uses the target spelling more often than the old one, in
+    entries whose key matches the rule. If upstream switches its own wording, the
+    pair turns itself off and upstream's choice stands."""
+    keep, skipped = {}, []
+    for r, kre, kno in compiled:
+        pairs = []
+        for old, new in r.get("replace", []):
+            n_old = n_new = 0
+            for d in baseline:
+                for k, v in d.items():
+                    if isinstance(v, str) and v != k and _matches(k, kre, kno):
+                        n_old += old in v
+                        n_new += new in v
+            if n_old and n_new <= n_old:
+                skipped.append(f"{r['name']}: {old}->{new} off (upstream uses old {n_old}, new {n_new})")
+            else:
+                pairs.append((old, new))
+        keep[r["name"]] = pairs
+    return keep, skipped
+
+
+def apply_rules(cfg, dicts, baseline=None):
+    """dicts: list of {src: ko} dicts (modified in place). Returns {rule: changed values}.
+    With baseline, replace pairs upstream no longer prefers are skipped and listed
+    under the "_skipped" key."""
     stats = {}
     compiled = [(r, re.compile(r["key"]), re.compile(r["key_not"]) if r.get("key_not") else None)
                 for r in cfg["rules"]]
+    if baseline is not None:
+        keep, skipped = upstream_preferred(compiled, baseline)
+        if skipped:
+            stats["_skipped"] = skipped
+        for r, _, _ in compiled:
+            r["replace"] = keep[r["name"]]
     for d in dicts:
         for k, v in list(d.items()):
             if not isinstance(v, str) or v == k:

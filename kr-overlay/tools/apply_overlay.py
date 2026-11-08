@@ -67,6 +67,9 @@ def main():
         return files[name]
 
     og, st = get("outgame"), get("static")
+    # upstream values as published, before anything from this overlay
+    baseline = [dict(og), dict(get("descriptions")), dict(get("ability_descriptions"))]
+    baseline += [dict(d) for fields in st.values() for d in fields.values()]
     filled = upstream_has = 0
     for f in sorted((OVERLAY / "additions").glob("*.json")):
         for table, pairs in load(f).items():
@@ -115,7 +118,7 @@ def main():
     if rules_path.exists():
         targets = [get("outgame"), get("descriptions"), get("ability_descriptions")]
         targets += [d for fields in get("static").values() for d in fields.values()]
-        rule_stats = rules_mod.apply_rules(load(rules_path), targets)
+        rule_stats = rules_mod.apply_rules(load(rules_path), targets, baseline)
 
     files["outgame"] = order_templates(files["outgame"])
     for name, obj in files.items():
@@ -128,6 +131,8 @@ def main():
     print(f"additions filled {filled} (upstream already translated differently: {upstream_has}); "
           f"overrides applied {applied}, conflicts {conflicts}; "
           f"font-safe glyphs fixed in {fs_values} values / {fs_files} files")
+    for line in rule_stats.pop("_skipped", []):
+        print("  RULE OFF " + line)
     for name, n in rule_stats.items():
         print(f"  rule {name}: {n} values")
     for line in report:

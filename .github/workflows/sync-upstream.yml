@@ -1,0 +1,39 @@
+# Every hour: if upstream (ddojuki-creator/dot-abyss-korean) has new commits,
+# take them as they are, re-apply kr-overlay (gaps only), and push only when
+# kr-overlay/verify.sh passes. On any failure nothing is pushed, the game keeps
+# using the last good version, and GitHub e-mails the repo owner.
+name: Sync upstream
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Sync upstream and verify
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bash kr-overlay/sync-upstream.sh
+      - name: Push
+        run: git push origin HEAD:main
