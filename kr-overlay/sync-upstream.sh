@@ -17,5 +17,6 @@ git checkout HEAD -- kr-overlay                   # keep our overlay
 python3 -I kr-overlay/tools/apply_overlay.py
 python3 -I kr-overlay/tools/manifest.py write .
 node scripts/validate-translations.mjs
+kr-overlay/verify.sh
 git add -A
 git commit -m "Sync upstream $(git rev-parse --short upstream/main) and re-apply KR overlay"
