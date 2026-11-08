@@ -108,6 +108,15 @@ def main():
                 conflicts += 1
                 report.append(f"CONFLICT {target} {src[:30]!r}: upstream now {str(cur)[:40]!r}")
 
+    sys.path.insert(0, str(Path(__file__).parent))
+    import rules as rules_mod
+    rule_stats = {}
+    rules_path = OVERLAY / "rules.json"
+    if rules_path.exists():
+        targets = [get("outgame"), get("descriptions"), get("ability_descriptions")]
+        targets += [d for fields in get("static").values() for d in fields.values()]
+        rule_stats = rules_mod.apply_rules(load(rules_path), targets)
+
     files["outgame"] = order_templates(files["outgame"])
     for name, obj in files.items():
         save(TR / name / "ko_KR.json", obj)
@@ -119,6 +128,8 @@ def main():
     print(f"additions filled {filled} (upstream already translated differently: {upstream_has}); "
           f"overrides applied {applied}, conflicts {conflicts}; "
           f"font-safe glyphs fixed in {fs_values} values / {fs_files} files")
+    for name, n in rule_stats.items():
+        print(f"  rule {name}: {n} values")
     for line in report:
         print("  " + line)
 

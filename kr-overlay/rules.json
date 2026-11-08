@@ -1,0 +1,21 @@
+{
+    "_note": "Source-conditioned wording unification. A rule touches a value only when its Japanese key matches; the majority spelling already used upstream is the target. Applied to outgame, descriptions, ability_descriptions and every static field. Stories are never touched.",
+    "rules": [
+        {"name": "paid gems [有償] -> 유료", "key": "有償", "replace": [["유상", "유료"]]},
+        {"name": "free gems [無償] -> 무료", "key": "無償", "replace": [["무상", "무료"]]},
+        {"name": "アビスジェム spacing", "key": "アビスジェム", "replace": [["어비스젬", "어비스 젬"]]},
+        {"name": "▼以下おまけ header", "key": "▼以下おまけ", "regex": [["▼\\s*(?:이하|아래)\\s*보너스", "▼ 이하 보너스"]]},
+        {"name": "フロント -> 프론트", "key": "フロント", "replace": [["프런트", "프론트"]]},
+        {"name": "おしごと時 costume", "key": "おしごと時基本コスチューム", "replace": [["일할 때 기본 코스튬", "근무 시 기본 코스튬"]]},
+        {"name": "光・闇・無属性", "key": "光・闇・無属性", "replace": [["광·암·무속성", "빛·어둠·무속성"], ["빛/어둠/무속성", "빛·어둠·무속성"]]},
+        {"name": "火・水・土属性", "key": "火・水・土属性", "replace": [["화·수·토속성", "화·수·토 속성"], ["불·물·토 속성", "화·수·토 속성"]]},
+        {"name": "魅了 -> 매료", "key": "魅了", "key_not": "魅惑", "replace": [["매혹", "매료"]]},
+        {"name": "耐性 -> 내성", "key": "耐性", "key_not": "抵抗|レジスト", "replace": [["저항", "내성"]]},
+        {"name": "恩恵 (Nether boon system) -> 혜택", "key": "恩恵(?:ゲージ|効果|一覧|[0-9０-９１２３]|\\{)", "key_not": "式神", "replace": [["은혜", "혜택"]]},
+        {"name": "炎上 (status) -> 발화", "key": "炎上", "key_not": "火傷", "replace": [["화상", "발화"]]},
+        {"name": "凍結 (status) -> 빙결", "key": "凍結", "replace": [["동결", "빙결"]]},
+        {"name": "会心 -> 치명타", "key": "会心", "replace": [["회심률", "치명타 확률"], ["회심 대미지", "치명타 피해"], ["회심", "치명타"]]},
+        {"name": "スキルチャージ -> 스킬 충전", "key": "スキルチャージ", "replace": [["스킬 차지", "스킬 충전"]]},
+        {"name": "通常攻撃 -> 일반 공격", "key": "通常攻撃", "replace": [["통상 공격", "일반 공격"]]}
+    ]
+}

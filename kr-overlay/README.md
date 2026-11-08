@@ -15,6 +15,7 @@
 | `tools/check_pairs.py` | 태그·변수·줄바꿈·일본어 잔존 검사 |
 | `sync-upstream.sh` | 원작자 최신본을 받아 그대로 가져온 뒤 이 보강을 다시 적용 |
 | `font_safe.json` + `tools/font_safe.py` | 스토리 한글 폰트(MaplestoryKR SDF)에 없는 기호(・〜—ー。、전각 공백 등)를 폰트에 있는 같은 모양으로 바꿈. 이름 사전과 mas/evs/men 스토리의 번역값만, 파일 형식 그대로 |
+| `rules.json` + `tools/rules.py` | 원문 조건부 표기 통일. 일본어 키에 해당 단어가 있을 때만 번역문의 소수 표기를 원작자 다수 표기로 바꿈(받침이 바뀌면 조사도 보정). 스토리는 대상 아님 |
 | `tools/sim_templates.py` | 모드의 화면 번역 방식(정확 일치 → 첫 글자 묶음의 틀, 파일 순서상 첫 일치)을 그대로 흉내 내 결과를 미리 확인. `--regress`로 틀 선택 변화 검사 |
 
 ## 틀(template) 순서
