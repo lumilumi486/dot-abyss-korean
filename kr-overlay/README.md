@@ -8,6 +8,7 @@
 | 경로 | 내용 |
 | --- | --- |
 | `additions/*.json` | 원작자 번역에 **없는** 문장만 채움. 원작자가 나중에 같은 문장을 번역하면 원작자 번역이 우선 |
+| `novels/<스토리ID>.json` | 스토리 대사 `{원문: 한국어}`. additions와 같이 원작자가 번역하지 않은 줄만 채움. 원작자 파일이 없는 새 스토리는 `translations/novels/<스토리ID>/ko_KR.json`을 새로 만듦(성인 장면은 다루지 않음) |
 | `overrides.json` | 원작자 번역을 **고치는** 항목(품질 수정). 고칠 당시의 원작자 값(`from`)을 함께 기록 |
 | `tools/apply_overlay.py` | 위 두 가지를 `translations/`에 적용 |
 | `tools/manifest.py` | `npm run manifest`와 같은 해시로 manifest 재생성 (원본 해시 재현 검증 완료) |

@@ -5,6 +5,8 @@ The overlay never edits upstream data blindly:
   for a key, upstream wins and the addition is reported as "upstream has it".
     {"<m_table>": {src: ko}}   -> outgame + every field of that static table
     {"_outgame_only": {src: ko}} -> outgame only (strings collected on screen)
+- novels/<novel_id>.json {src: ko} fill story lines the same way (gaps only);
+  a story upstream has no file for gets translations/novels/<novel_id>/ko_KR.json
 - overrides.json replaces specific upstream values (quality fixes). Each entry
   records the upstream value it was written against; if upstream has since
   changed that value, the override is skipped and reported as a conflict.
@@ -124,11 +126,28 @@ def main():
     for name, obj in files.items():
         save(TR / name / "ko_KR.json", obj)
 
+    # stories: novels/<novel_id>.json fills only lines upstream has not translated
+    novel_filled = novel_files = 0
+    for f in sorted((OVERLAY / "novels").glob("*.json")):
+        target = TR / "novels" / f.stem / "ko_KR.json"
+        cur = load(target) if target.exists() else {}
+        n = 0
+        for src, ko in load(f).items():
+            if not translated(cur, src):
+                cur[src] = ko
+                n += 1
+        if n:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            save(target, cur)
+            novel_filled += n
+            novel_files += 1
+
     sys.path.insert(0, str(Path(__file__).parent))
     import font_safe
     fs_files, fs_values = font_safe.apply(ROOT)
 
     print(f"additions filled {filled} (upstream already translated differently: {upstream_has}); "
+          f"story lines filled {novel_filled} in {novel_files} files; "
           f"overrides applied {applied}, conflicts {conflicts}; "
           f"font-safe glyphs fixed in {fs_values} values / {fs_files} files")
     for line in rule_stats.pop("_skipped", []):

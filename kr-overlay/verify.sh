@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Pre-commit gate. Fails (non-zero) unless ALL hold:
-#  1. every additions file passes check_pairs (tags, placeholders, line breaks, no Japanese left)
+#  1. every additions/novels file passes check_pairs (tags, placeholders, line breaks,
+#     no Japanese left, Hangul inside the story font's KS X 1001 set)
 #  2. upstream's own validator finds no more problems than it finds in clean upstream
 #     (upstream's own issues pass through untouched; the overlay must add none)
 #  3. applying the overlay to a clean upstream checkout, then running upstream's own
@@ -9,7 +10,8 @@
 set -euo pipefail
 repro=1; [ "${1:-}" = "--no-repro" ] && repro=0
 cd "$(dirname "$0")/.."
-for f in kr-overlay/additions/*.json; do
+for f in kr-overlay/additions/*.json kr-overlay/novels/*.json; do
+  [ -e "$f" ] || continue
   python3 -I kr-overlay/tools/check_pairs.py "$f" | tail -1 | grep -q "problems 0" || { echo "FAIL check_pairs $f"; exit 1; }
 done
 

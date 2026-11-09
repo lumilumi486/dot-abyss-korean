@@ -4,7 +4,7 @@ Fails on: tag/placeholder mismatch, more line breaks than the source,
 Japanese kana/kanji left in the Korean, empty or unchanged values.
 Colour tags added around Korean terms are allowed only as balanced pairs.
 
-usage: python3 -I check_pairs.py <additions.json>
+usage: python3 -I check_pairs.py <additions.json | novels/<id>.json>
 """
 import json
 import re
@@ -31,11 +31,26 @@ def check(src, ko):
     left = JAPANESE.findall(ko)
     if left:
         problems.append(f"Japanese left: {''.join(left)}")
+    # the story font (MaplestoryKR SDF) is a static atlas; upstream uses only the
+    # 2,350 KS X 1001 syllables, so anything outside that set may render as a box
+    rare = [c for c in ko if "가" <= c <= "힣" and not _ks(c)]
+    if rare:
+        problems.append(f"Hangul outside KS X 1001: {''.join(rare)}")
     return problems
+
+
+def _ks(c):
+    try:
+        c.encode("euc-kr")
+        return True
+    except UnicodeEncodeError:
+        return False
 
 
 def main():
     data = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+    if all(isinstance(v, str) for v in data.values()):
+        data = {"story": data}  # kr-overlay/novels/<id>.json is a flat {src: ko}
     bad = 0
     total = 0
     for table, pairs in data.items():
