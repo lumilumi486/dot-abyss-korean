@@ -1,0 +1,12 @@
+{
+ "_outgame_only": {
+  "<color=#4CF37B>{0}絆pt</color>을(를) 소비해 <color=#4CF37B>強化</color>하시겠습니까?": "<color=#4CF37B>인연 pt {0}</color>을(를) 소비해 <color=#4CF37B>강화</color>하시겠습니까?",
+  "<color=#4CF37B>{0}覚醒pt</color>을(를) 소비해 <color=#4CF37B>強化</color>하시겠습니까?": "<color=#4CF37B>각성 pt {0}</color>을(를) 소비해 <color=#4CF37B>강화</color>하시겠습니까?",
+  "<color=#4CF37B>アビスジェムx{0}</color>을(를) 소비해<br>강화 상태를 <color=#4CF37B>初期化</color>하시겠습니까?": "<color=#4CF37B>어비스 젬 x{0}</color>을(를) 소비해<br>강화 상태를 <color=#4CF37B>초기화</color>하시겠습니까?",
+  "<color=#4CF37B>アビスジェム×{0}</color>을(를) 소비해<br>강화 상태를 <color=#4CF37B>初期化</color>하시겠습니까?": "<color=#4CF37B>어비스 젬 ×{0}</color>을(를) 소비해<br>강화 상태를 <color=#4CF37B>초기화</color>하시겠습니까?",
+  "iOS GAMES STORE版のデータ削除後に発生していたエラーのお詫びです": "iOS GAMES STORE판 데이터 삭제 후 발생하던 오류에 대한 사과입니다",
+  "{0} iOS GAMES STORE版のデータ削除後に発生していたエラーのお詫びです": "{0} iOS GAMES STORE판 데이터 삭제 후 발생하던 오류에 대한 사과입니다",
+  "문장: {[c]}のキャラ編成数によって効果増加": "문장: {[c]} 캐릭터 편성 수에 따라 효과 증가",
+  "편성 したい装備を選択してください。": "편성할 장비를 선택해 주세요."
+ }
+}
