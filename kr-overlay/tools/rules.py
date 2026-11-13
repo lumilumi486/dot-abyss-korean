@@ -1,7 +1,8 @@
 """Apply kr-overlay/rules.json: source-conditioned wording unification.
 
 A rule changes a Korean value only when its Japanese key matches `key` (regex)
-and not `key_not`. Plain `replace` pairs fix the Korean particle that follows the
+and not `key_not`. Rules marked "user_choice" carry a wording the user chose and
+are not switched off when upstream prefers the other spelling. Plain `replace` pairs fix the Korean particle that follows the
 replaced word when the new word's final consonant differs (매혹을 -> 매료를,
 은혜가 -> 혜택이). Placeholders/tags are never part of a replaced term.
 """
@@ -65,6 +66,10 @@ def upstream_preferred(compiled, baseline):
     pair turns itself off and upstream's choice stands."""
     keep, skipped = {}, []
     for r, kre, kno in compiled:
+        if r.get("user_choice"):
+            # wording the user decided on: applied even where upstream mostly uses the other spelling
+            keep[r["name"]] = [tuple(x) for x in r.get("replace", [])]
+            continue
         pairs = []
         for old, new in r.get("replace", []):
             n_old = n_new = 0

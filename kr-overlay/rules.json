@@ -1,5 +1,5 @@
 {
-    "_note": "Source-conditioned wording unification. A rule touches a value only when its Japanese key matches; the majority spelling already used upstream is the target. Applied to outgame, descriptions, ability_descriptions and every static field. Stories are never touched.",
+    "_note": "Source-conditioned wording unification. A rule touches a value only when its Japanese key matches; the majority spelling already used upstream is the target. Applied to outgame, descriptions, ability_descriptions and every static field. Stories are never touched. Rules named \"[user] ...\" are wording decisions the user made on 2026-11-14 (커먼, 치명타 확률, 치명타 피해, 대미지, 한계 돌파, 인연, 창관, 주점).",
     "rules": [
         {"name": "paid gems [有償] -> 유료", "key": "有償", "replace": [["유상", "유료"]]},
         {"name": "free gems [無償] -> 무료", "key": "無償", "replace": [["무상", "무료"]]},
@@ -16,6 +16,14 @@
         {"name": "凍結 (status) -> 빙결", "key": "凍結", "replace": [["동결", "빙결"]]},
         {"name": "会心 -> 치명타", "key": "会心", "replace": [["회심률", "치명타 확률"], ["회심 대미지", "치명타 피해"], ["회심", "치명타"]]},
         {"name": "スキルチャージ -> 스킬 충전", "key": "スキルチャージ", "replace": [["스킬 차지", "스킬 충전"]]},
-        {"name": "通常攻撃 -> 일반 공격", "key": "通常攻撃", "replace": [["통상 공격", "일반 공격"]]}
+        {"name": "通常攻撃 -> 일반 공격", "key": "通常攻撃", "replace": [["통상 공격", "일반 공격"]]},
+        {"name": "[user] コモン -> 커먼", "key": "コモン", "user_choice": true, "replace": [["코먼", "커먼"]]},
+        {"name": "[user] 会心率 -> 치명타 확률", "key": "会心率", "user_choice": true, "replace": [["치명타율", "치명타 확률"], ["치명률", "치명타 확률"]]},
+        {"name": "[user] 会心ダメージ -> 치명타 피해", "key": "会心ダメージ", "user_choice": true, "replace": [["치명타 대미지", "치명타 피해"], ["치명타 데미지", "치명타 피해"], ["치명 피해", "치명타 피해"]]},
+        {"name": "[user] ダメージ -> 대미지 (치명타 피해 is kept)", "key": "ダメージ", "key_not": "被害", "user_choice": true, "replace": [["데미지", "대미지"]], "regex": [["(?<!치명타 )(?<![가-힣])피해", "대미지"]]},
+        {"name": "[user] 限界突破 -> 한계 돌파", "key": "限界突破", "user_choice": true, "replace": [["한계돌파", "한계 돌파"]]},
+        {"name": "[user] 絆 -> 인연 (유대감 kept)", "key": "絆", "user_choice": true, "replace": [["유대를", "인연을"], ["유대가", "인연이"], ["유대는", "인연은"], ["유대와", "인연과"], ["유대로", "인연으로"], ["유대의", "인연의"], ["유대 ", "인연 "]]},
+        {"name": "[user] 娼館 -> 창관", "key": "娼館", "user_choice": true, "replace": [["매춘부관", "창관"], ["유곽", "창관"]]},
+        {"name": "[user] 酒場 -> 주점", "key": "酒場", "user_choice": true, "replace": [["술집", "주점"]]}
     ]
 }
