@@ -24,6 +24,8 @@
         {"name": "[user] 限界突破 -> 한계 돌파", "key": "限界突破", "user_choice": true, "replace": [["한계돌파", "한계 돌파"]]},
         {"name": "[user] 絆 -> 인연 (유대감 kept)", "key": "絆", "user_choice": true, "replace": [["유대를", "인연을"], ["유대가", "인연이"], ["유대는", "인연은"], ["유대와", "인연과"], ["유대로", "인연으로"], ["유대의", "인연의"], ["유대 ", "인연 "]]},
         {"name": "[user] 娼館 -> 창관", "key": "娼館", "user_choice": true, "replace": [["매춘부관", "창관"], ["유곽", "창관"]]},
-        {"name": "[user] 酒場 -> 주점", "key": "酒場", "user_choice": true, "replace": [["술집", "주점"]]}
+        {"name": "[user] 酒場 -> 주점", "key": "酒場", "user_choice": true, "replace": [["술집", "주점"]]},
+        {"name": "[lumi] countdown あとN… exact entries use the template wording (N시간 N분 남음)", "key": "^あと\\d+(?:日|時間|分|秒)(?:\\d+(?:日|時間|分|秒))*$", "regex": [["^\\s*(?:남은 시간\\s*)?(\\d[\\d일시간분초 ]*?[일간분초])\\s*(?:후|남음)?\\s*$", "\\1 남음"], ["(일|시간|분)\\s*(?=\\d)", "\\1 "]]},
+        {"name": "[lumi] N日N時間N分 spacing follows the template (N일 N시간 N분)", "key": "^\\d+日\\d+時間(?:\\d+分)?$", "regex": [["(일|시간)\\s*(?=\\d)", "\\1 "]]}
     ]
 }
