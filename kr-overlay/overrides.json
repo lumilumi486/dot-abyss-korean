@@ -112,15 +112,15 @@
         },
         "1パスレベルにつき　 100": {
             "from": "1패스 레벨당 100",
-            "to": "<space=1.29em>패스 1레벨당 가격<space=1.32em>100"
+            "to": "<align=left><pos=30%>패스 1레벨당 가격<pos=78%>100"
         },
         "パスレベルを購入すると<color=#4CF37Bff>Lv</color>が": {
             "from": "패스 레벨을 구매하면 <color=#4CF37Bff>Lv</color>",
-            "to": "<space=0.46em>패스 레벨을 구매하면 패스 <color=#4CF37Bff>Lv</color>가"
+            "to": "<align=right>패스 레벨을 구매하면 패스 <color=#4CF37Bff>Lv</color>가"
         },
         "になり、以下の報酬が獲得できます。": {
             "from": "에 도달하며, 아래 보상을 획득할 수 있습니다.",
-            "to": "에 도달하며, 아래 보상을 받을 수 있습니다."
+            "to": "<align=left>에 도달하며, 아래 보상을 받을 수 있습니다."
         }
     }
 }
