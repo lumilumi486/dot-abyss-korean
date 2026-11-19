@@ -7,6 +7,8 @@ The overlay never edits upstream data blindly:
     {"_outgame_only": {src: ko}} -> outgame only (strings collected on screen)
 - novels/<novel_id>.json {src: ko} fill story lines the same way (gaps only);
   a story upstream has no file for gets translations/novels/<novel_id>/ko_KR.json
+- novel_overrides/<novel_id>.json rewrites story lines the same way (quality fixes,
+  never sexual scenes), checked against the upstream value like overrides.json
 - overrides.json replaces specific upstream values (quality fixes). Each entry
   records the upstream value it was written against; if upstream has since
   changed that value, the override is skipped and reported as a conflict.
@@ -93,7 +95,11 @@ def main():
     applied = conflicts = 0
     ov_path = OVERLAY / "overrides.json"
     report = []
-    for target, entries in (load(ov_path) if ov_path.exists() else {}).items():
+    all_ov = load(ov_path) if ov_path.exists() else {}
+    # story rewrites: novel_overrides/<novel_id>.json {src: {"from": upstream_ko, "to": new_ko}}
+    for f in sorted((OVERLAY / "novel_overrides").glob("*.json")):
+        all_ov["novels/" + f.stem] = load(f)
+    for target, entries in all_ov.items():
         if target.startswith("static/"):
             _, table, field = target.split("/", 2)
             d = st.get(table, {}).get(field)
