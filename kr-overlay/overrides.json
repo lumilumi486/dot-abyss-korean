@@ -513,6 +513,270 @@
         "【2話】蒼翼の哨兵、ナンバー００１\\nを再生しますか？": {
             "from": "「【2화】푸른 날개의 파수꾼, 넘버００１」를\\n재생하시겠습니까?",
             "to": "「【2화】푸른 날개의 파수꾼, 넘버００１」을\\n재생하시겠습니까?"
+        },
+        "ラウンジ1": {
+            "from": "라운지1",
+            "to": "라운지 1"
+        },
+        "ラウンジ1の満足度": {
+            "from": "라운지1 만족도",
+            "to": "라운지 1 만족도"
+        },
+        "ラウンジ1に配置": {
+            "from": "라운지1에 배치",
+            "to": "라운지 1에 배치"
+        },
+        "ラウンジ1<br>に配置": {
+            "from": "라운지1<br>에 배치",
+            "to": "라운지 1<br>에 배치"
+        },
+        "ラウンジ2": {
+            "from": "라운지2",
+            "to": "라운지 2"
+        },
+        "ラウンジ2の満足度": {
+            "from": "라운지2 만족도",
+            "to": "라운지 2 만족도"
+        },
+        "ラウンジ2<br>に配置": {
+            "from": "라운지2<br>에 배치",
+            "to": "라운지 2<br>에 배치"
+        },
+        "フロア1": {
+            "from": "플로어1",
+            "to": "플로어 1"
+        },
+        "フロア1の満足度": {
+            "from": "플로어1 만족도",
+            "to": "플로어 1 만족도"
+        },
+        "フロア2": {
+            "from": "플로어2",
+            "to": "플로어 2"
+        },
+        "フロア2の満足度": {
+            "from": "플로어2 만족도",
+            "to": "플로어 2 만족도"
+        },
+        "フロア3": {
+            "from": "플로어3",
+            "to": "플로어 3"
+        },
+        "フロア3の満足度": {
+            "from": "플로어3 만족도",
+            "to": "플로어 3 만족도"
+        },
+        "フロア1に「ドリンク」を付与し満足度+30%": {
+            "from": "1층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア1に「ドリンク」を付与し満足度+50%": {
+            "from": "1층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア1に「ドリンク」を付与し満足度+80%": {
+            "from": "1층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア1に「接客」を付与し満足度+30%": {
+            "from": "1층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア1に「接客」を付与し満足度+50%": {
+            "from": "1층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア1に「接客」を付与し満足度+80%": {
+            "from": "1층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア1に「料理」を付与し満足度+30%": {
+            "from": "1층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア1に「料理」を付与し満足度+50%": {
+            "from": "1층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア1に「料理」を付与し満足度+80%": {
+            "from": "1층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア2に「ドリンク」を付与し満足度+30%": {
+            "from": "2층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア2に「ドリンク」を付与し満足度+50%": {
+            "from": "2층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア2に「ドリンク」を付与し満足度+80%": {
+            "from": "2층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア2に「接客」を付与し満足度+30%": {
+            "from": "2층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア2に「接客」を付与し満足度+50%": {
+            "from": "2층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア2に「接客」を付与し満足度+80%": {
+            "from": "2층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア2に「料理」を付与し満足度+30%": {
+            "from": "2층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア2に「料理」を付与し満足度+50%": {
+            "from": "2층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア2に「料理」を付与し満足度+80%": {
+            "from": "2층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア3に「ドリンク」を付与し満足度+30%": {
+            "from": "3층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア3に「ドリンク」を付与し満足度+50%": {
+            "from": "3층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア3に「ドリンク」を付与し満足度+80%": {
+            "from": "3층에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア3に「接客」を付与し満足度+30%": {
+            "from": "3층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア3に「接客」を付与し満足度+50%": {
+            "from": "3층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア3に「接客」を付与し満足度+80%": {
+            "from": "3층에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "フロア3に「料理」を付与し満足度+30%": {
+            "from": "3층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>30%</color>"
+        },
+        "フロア3に「料理」を付与し満足度+50%": {
+            "from": "3층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "フロア3に「料理」を付与し満足度+80%": {
+            "from": "3층에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "플로어 3에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ1に「ドリンク」を付与し満足度+50%": {
+            "from": "라운지1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ1に「ドリンク」を付与し満足度+80%": {
+            "from": "라운지1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ1に「接客」を付与し満足度+50%": {
+            "from": "라운지1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ1に「接客」を付与し満足度+80%": {
+            "from": "라운지1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ1に「料理」を付与し満足度+50%": {
+            "from": "라운지1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ1に「料理」を付与し満足度+80%": {
+            "from": "라운지1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 1에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ2に「ドリンク」を付与し満足度+50%": {
+            "from": "라운지2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ2に「ドリンク」を付与し満足度+80%": {
+            "from": "라운지2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ2に「接客」を付与し満足度+50%": {
+            "from": "라운지2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ2に「接客」を付与し満足度+80%": {
+            "from": "라운지2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "ラウンジ2に「料理」を付与し満足度+50%": {
+            "from": "라운지2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>50%</color>"
+        },
+        "ラウンジ2に「料理」を付与し満足度+80%": {
+            "from": "라운지2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>",
+            "to": "라운지 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室1に「ドリンク」を付与し満足度+80%": {
+            "from": "개인실1에 <color=#AC83FD>「드링크」</color>를 추가하여 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 1에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室2に「接客」を付与し満足度+80%": {
+            "from": "개인실2에 <color=#AC83FD>「접객」</color>을 부여해 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 2에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室2に「料理」を付与し満足度+80%": {
+            "from": "개인실2에 <color=#AC83FD>「요리」</color>를 부여해 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 2에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室3に「ドリンク」を付与し満足度+80%": {
+            "from": "개인실3에 <color=#AC83FD>「드링크」</color>를 부여해 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 3에 <color=#AC83FD>「드링크」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室3に「接客」を付与し満足度+80%": {
+            "from": "개인실3에 <color=#AC83FD>「접객」</color>을 부여해 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 3에 <color=#AC83FD>「접객」</color>을 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "個室3に「料理」を付与し満足度+80%": {
+            "from": "개인실3에 <color=#AC83FD>「요리」</color>를 부여해 만족도+<color=#4CF37B>80%</color>",
+            "to": "개인실 3에 <color=#AC83FD>「요리」</color>를 부여해 만족도 +<color=#4CF37B>80%</color>"
+        },
+        "개인실 1の満足度": {
+            "from": "개인실 1의 만족도",
+            "to": "개인실 1 만족도"
+        },
+        "개인실 2の満足度": {
+            "from": "개인실 2의 만족도",
+            "to": "개인실 2 만족도"
+        },
+        "개인실 3の満足度": {
+            "from": "개인실 3의 만족도",
+            "to": "개인실 3 만족도"
+        },
+        "라운지1の満足度": {
+            "from": "라운지1의 만족도",
+            "to": "라운지 1 만족도"
+        },
+        "라운지2の満足度": {
+            "from": "라운지2의 만족도",
+            "to": "라운지 2 만족도"
+        },
+        "플로어1の満足度": {
+            "from": "플로어1의 만족도",
+            "to": "플로어 1 만족도"
+        },
+        "플로어2の満足度": {
+            "from": "플로어2의 만족도",
+            "to": "플로어 2 만족도"
+        },
+        "플로어3の満足度": {
+            "from": "플로어3의 만족도",
+            "to": "플로어 3 만족도"
         }
     }
 }
