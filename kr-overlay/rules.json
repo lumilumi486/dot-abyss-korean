@@ -359,6 +359,41 @@
                     "충격(빛·어둠·무 속성)"
                 ]
             ]
+        },
+        {
+            "name": "[lumi] emblem colour only where the original colours it (2026-11-24)",
+            "key": "紋章\\s*[：:]",
+            "key_not": "<color=#[0-9A-Fa-f]{6}>紋章",
+            "regex": [
+                [
+                    "<color=#(?:6B8CFF|FF5050)>(문장\\s*:\\s*(?:충격|열정))</color>",
+                    "\\1"
+                ]
+            ]
+        },
+        {
+            "name": "[lumi] story unlock popup in one form (2026-11-24)",
+            "key": "^ストーリー解放：「",
+            "regex": [
+                [
+                    "^스토리 (?:개방|해방): (「[\\s\\S]*」) (?:개방|해방)!$",
+                    "스토리 해금: \\1 해금!"
+                ],
+                [
+                    "^(「[\\s\\S]*」) 스토리가 해금되었습니다!$",
+                    "스토리 해금: \\1 해금!"
+                ]
+            ]
+        },
+        {
+            "name": "[lumi] STAGE label as upstream mostly writes it (2026-11-24)",
+            "key": "STAGE\\s*\\d",
+            "regex": [
+                [
+                    "스테이지\\s*(?=\\d)",
+                    "STAGE"
+                ]
+            ]
         }
     ]
 }
