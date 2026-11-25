@@ -186,6 +186,33 @@ def main():
             save(target, cur)
             user_lines += n
 
+    # user term choices: where the Japanese key has the term, swap the Korean word everywhere
+    term_n = 0
+    if um_path.exists():
+        reps = load(um_path).get("term_replace", [])
+        if reps:
+            def walk(o):
+                nonlocal term_n
+                for k, v in list(o.items()):
+                    if isinstance(v, dict):
+                        walk(v)
+                    elif isinstance(v, str):
+                        nv = v
+                        for ja, old, new in reps:
+                            if ja in k and old in nv:
+                                nv = nv.replace(old, new)
+                        if nv != v:
+                            o[k] = nv
+                            term_n += 1
+            for p in sorted(TR.glob("*/ko_KR.json")) + sorted((TR / "novels").glob("*/ko_KR.json")):
+                if p.parent.name == "manifest":
+                    continue
+                obj = load(p)
+                before = term_n
+                walk(obj)
+                if term_n != before:
+                    save(p, obj)
+
     sys.path.insert(0, str(Path(__file__).parent))
     import font_safe
     fs_files, fs_values = font_safe.apply(ROOT)
@@ -194,7 +221,7 @@ def main():
           f"story lines filled {novel_filled} in {novel_files} files; "
           f"overrides applied {applied}, conflicts {conflicts}; "
           f"font-safe glyphs fixed in {fs_values} values / {fs_files} files; "
-          f"user adult translations: {user_lines} story lines, {user_meta} titles/synopses")
+          f"user adult translations: {user_lines} story lines, {user_meta} titles/synopses; user term swaps {term_n}")
     for line in rule_stats.pop("_skipped", []):
         print("  RULE OFF " + line)
     for name, n in rule_stats.items():
