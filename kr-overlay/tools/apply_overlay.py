@@ -16,6 +16,11 @@ The overlay never edits upstream data blindly:
     <file> is "outgame", "names", "titles", "descriptions", "another_name",
     "ability_descriptions", or "static/<table>/<field>"
 
+- user_r18/: adult-scene translations the user supplied (made elsewhere, not by this
+  overlay's authors). They REPLACE upstream values: novels/<novel_id>.json {src: ko}
+  and meta.json {"titles"|"descriptions"|"outgame": {src: ko}} (synopses go to
+  descriptions and, where upstream keeps a copy there, to outgame too).
+
 usage (from repo root): python3 -I kr-overlay/tools/apply_overlay.py
 """
 import json
@@ -128,6 +133,26 @@ def main():
         targets += [d for fields in get("static").values() for d in fields.values()]
         rule_stats = rules_mod.apply_rules(load(rules_path), targets, baseline)
 
+    # user-supplied adult-scene translations: replace upstream
+    user_meta = user_lines = 0
+    um_path = OVERLAY / "user_r18" / "meta.json"
+    if um_path.exists():
+        um = load(um_path)
+        for src, ko in um.get("titles", {}).items():
+            for name in ("titles", "outgame"):
+                d = get(name)
+                if name == "titles" or src in d:
+                    if d.get(src) != ko:
+                        d[src] = ko
+                        user_meta += 1
+        for src, ko in um.get("descriptions", {}).items():
+            for name in ("descriptions", "outgame"):
+                d = get(name)
+                if name == "descriptions" or src in d:
+                    if d.get(src) != ko:
+                        d[src] = ko
+                        user_meta += 1
+
     files["outgame"] = order_templates(files["outgame"])
     for name, obj in files.items():
         save(TR / name / "ko_KR.json", obj)
@@ -148,6 +173,19 @@ def main():
             novel_filled += n
             novel_files += 1
 
+    for f in sorted((OVERLAY / "user_r18" / "novels").glob("*.json")):
+        target = TR / "novels" / f.stem / "ko_KR.json"
+        cur = load(target) if target.exists() else {}
+        n = 0
+        for src, ko in load(f).items():
+            if cur.get(src) != ko:
+                cur[src] = ko
+                n += 1
+        if n or not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            save(target, cur)
+            user_lines += n
+
     sys.path.insert(0, str(Path(__file__).parent))
     import font_safe
     fs_files, fs_values = font_safe.apply(ROOT)
@@ -155,7 +193,8 @@ def main():
     print(f"additions filled {filled} (upstream already translated differently: {upstream_has}); "
           f"story lines filled {novel_filled} in {novel_files} files; "
           f"overrides applied {applied}, conflicts {conflicts}; "
-          f"font-safe glyphs fixed in {fs_values} values / {fs_files} files")
+          f"font-safe glyphs fixed in {fs_values} values / {fs_files} files; "
+          f"user adult translations: {user_lines} story lines, {user_meta} titles/synopses")
     for line in rule_stats.pop("_skipped", []):
         print("  RULE OFF " + line)
     for name, n in rule_stats.items():

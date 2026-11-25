@@ -10,7 +10,7 @@
 set -euo pipefail
 repro=1; [ "${1:-}" = "--no-repro" ] && repro=0
 cd "$(dirname "$0")/.."
-for f in kr-overlay/additions/*.json kr-overlay/novels/*.json; do
+for f in kr-overlay/additions/*.json kr-overlay/novels/*.json kr-overlay/user_r18/novels/*.json; do
   [ -e "$f" ] || continue
   python3 -I kr-overlay/tools/check_pairs.py "$f" | tail -1 | grep -q "problems 0" || { echo "FAIL check_pairs $f"; exit 1; }
 done
