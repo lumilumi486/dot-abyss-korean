@@ -20,6 +20,8 @@ from pathlib import Path
 
 TOKEN = re.compile(r"\{\[[^\]]+\][^}]*\}|\{[^\[{}][^{}]*\}")
 COLOR = re.compile(r"</?color(?:=[^>]+)?>")
+TOKEN_NAMED = re.compile(r"\{\[[^\]]+\][^}]*\}")
+JA = re.compile(r"[\u3040-\u30fa\u30fd-\u30ff\u3400-\u4dbf\u4e00-\u9fff]")
 
 
 class Sim:
@@ -44,7 +46,51 @@ class Sim:
             self.buckets.setdefault(first, []).append(
                 (re.compile("^" + "".join(parts) + "$", re.S), [m.group() for m in ms], v, k))
 
-    def lookup(self, text):
+    def _exact(self, text):
+        for d in self.exact:
+            if text in d and isinstance(d[text], str):
+                return d[text]
+        return None
+
+    def lookup(self, text, depth=0):
+        """AbyssMod lumi-12: a captured part that still holds Japanese is translated on its own (exact, then this
+        lookup, at most 2 levels, only if shorter than the whole text). First matching template wins, as before."""
+        for d in self.exact:
+            if text in d and isinstance(d[text], str) and d[text] != text:
+                return d[text], "exact"
+        t = COLOR.sub("", text)
+        if t != text:
+            for d in self.exact:
+                if t in d and isinstance(d[t], str) and d[t] != t:
+                    return d[t], "exact"
+        for b in ([t[0]] if t else []) + ["\0"]:
+            for rx, names, v, k in self.buckets.get(b, []):
+                m = rx.match(t)
+                if not m:
+                    continue
+                out = v
+                for n, val in zip(names, m.groups()):
+                    if JA.search(val):
+                        e = self._exact(val)
+                        if e is not None:
+                            val = e
+                        elif len(val) < len(t) and depth < 2:
+                            r, _ = self.lookup(val, depth + 1)
+                            if r:
+                                val = r
+                    nm = re.match(r"\{\[([^\]]+)\]([^}]*)\}", n)
+                    if not nm:
+                        out = re.sub(re.escape(n), lambda _m, v_=val: v_, out)
+                        continue
+                    rep = self._exact(val) or val
+                    out = re.sub(r"\{\[" + re.escape(nm.group(1)) + r"\]([^}]*)\}",
+                                 lambda mm, r_=rep: r_ + mm.group(1), out)
+                if TOKEN_NAMED.search(out):
+                    continue
+                return out, k
+        return None, None
+
+    def lookup_lumi11(self, text):
         for d in self.exact:
             if text in d and isinstance(d[text], str) and d[text] != text:
                 return d[text], "exact"
